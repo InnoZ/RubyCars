@@ -1,7 +1,11 @@
 class InfiniteLoop
   def run
+    i = 0
     loop do
+      i += 1
+      p "Run no.#{i}"
       begin
+        puts ""
         RubyCars::Base.all.each do |subclass|
           subclass.new.run
         end
