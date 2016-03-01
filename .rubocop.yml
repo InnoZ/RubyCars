@@ -1,0 +1,31 @@
+AllCops:
+  Exclude:
+    - 'bin/**'
+    - 'db/**/*'
+Style/Documentation:
+  Exclude:
+    - 'app/**/*'
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'config/**/*'
+
+Metrics/LineLength:
+  Max: 120
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%w': '[]'
+    '%i': '[]'
+
+Style/TrailingComma:
+  EnforcedStyleForMultiline: comma
+
+# Sequel defines select, disable cop to allow legitimate uses
+Performance/Detect:
+  Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
