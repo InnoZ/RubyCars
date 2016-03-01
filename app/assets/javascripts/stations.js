@@ -1,9 +1,9 @@
 var allFunctions = function() {
 ////////////////////////////////////////////////////////////
-// all the functions to be loaded after doucment is ready //
+// all the functions to be loaded after document is ready //
 ////////////////////////////////////////////////////////////
 
-  $('.dropdown-toggle').dropdown(); // bootstrap dropdown not working on production otherwise
+  jQuery('.dropdown-toggle').dropdown(); // bootstrap dropdown not working on production otherwise
 
   var responsiveMapSize = function() {
     var headerOffset = jQuery('header:visible').outerHeight();
