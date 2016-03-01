@@ -3,9 +3,8 @@ class InfiniteLoop
     i = 0
     loop do
       i += 1
-      p "Run no.#{i}"
+      start = Time.now
       begin
-        puts ""
         RubyCars::Base.all.each do |subclass|
           subclass.new.run
         end
@@ -14,6 +13,9 @@ class InfiniteLoop
         e.backtrace.each { |line| Rails.logger.error line }
         next
       end
+      finish = Time.now
+      diff = finish - start
+      puts "Run no.#{i} took #{diff} seconds"
     end
   end
 end
