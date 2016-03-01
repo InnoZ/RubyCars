@@ -9,9 +9,6 @@ Style/Documentation:
     - 'test/**/*'
     - 'config/**/*'
 
-Metrics/LineLength:
-  Max: 120
-
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%w': '[]'
@@ -29,3 +26,16 @@ Style/SingleSpaceBeforeFirstArg:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 15
+
+MetricS/AbcSize:
+  Max: 20
+
+Style/CyclomaticComplexity:
+  Max: 20
+
