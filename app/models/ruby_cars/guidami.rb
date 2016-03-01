@@ -1,6 +1,5 @@
 module RubyCars
   class Guidami < Base
-    # rubocop:disable MethodLength
     def run
       stations.each do |station|
         RubyCars::Importer.new(

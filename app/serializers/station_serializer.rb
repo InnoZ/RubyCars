@@ -4,13 +4,13 @@ class StationSerializer < ActiveModel::Serializer
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [object.longitude, object.latitude]
+        coordinates: [object.longitude, object.latitude],
       },
       properties: {
         provider_name: provider_name,
         cars: object.cars,
         last_update: object.updated_at.to_s,
-      }
+      },
     }
   end
 

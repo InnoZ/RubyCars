@@ -1,6 +1,5 @@
 module RubyCars
   class Enterprise < Base
-    # rubocop:disable MethodLength, Metrics/AbcSize
     def run
       stations.fetch('lotdetailsList').each do |station|
         RubyCars::Importer.new(

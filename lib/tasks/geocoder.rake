@@ -1,7 +1,7 @@
 namespace :geocoder do
-  task :prepare, [:database] => :environment do |task, args|
+  task :prepare, [:database] => :environment do |_task, args|
     DUMP_PATH = Rails.root.join('dumps', 'admin_areas.dump')
     puts "Importing osm dump into database #{args.with_defaults(database: 'rubycars_development')}"
-    %x(psql -d #{args.database} < #{DUMP_PATH})
+    "psql -d #{args.database} < #{DUMP_PATH}"
   end
 end

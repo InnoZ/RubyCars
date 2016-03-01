@@ -1,6 +1,5 @@
 module RubyCars
   class GoGet < Base
-    # rubocop:disable MethodLength, Metrics/AbcSize
     def run
       stations.each do |station|
         RubyCars::Importer.new(
@@ -29,7 +28,7 @@ module RubyCars
 
     def header
       {
-        'Cookie' => "PHPSESSID=#{cookie}"
+        'Cookie' => "PHPSESSID=#{cookie}",
       }
     end
 
@@ -41,7 +40,7 @@ module RubyCars
 
     def query
       {
-        'action' => 'pods'
+        'action' => 'pods',
       }
     end
 
