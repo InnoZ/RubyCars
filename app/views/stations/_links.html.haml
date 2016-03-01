@@ -1,0 +1,21 @@
+.btn-group-vertical.provider-button-group
+  = link_to root_path, class: "btn btn-default provider-button overview-button", role: "button" do
+    Overview
+    %span.glyphicon.glyphicon-globe
+
+.dropdown.region-dropdown
+  %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+    = params[:region] || 'Choose a region'
+    %span.caret
+  %ul.dropdown-menu.region-dropdown-menu
+    - @regions.each do |r|
+      %li
+        = link_to r.id, stations_path(region: r)
+
+.btn-group-vertical.provider-button-group
+  - @providers_in_region.each do |p|
+    - if p.id == params[:provider]
+      - css_class = 'active'
+    - else
+      - css_class = ''
+    = link_to p.name, stations_path(region: params[:region], provider: p.id), class: "btn btn-default provider-button provider-#{p.name} #{css_class}", role: "button"

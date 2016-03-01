@@ -1,0 +1,115 @@
+.container
+
+  .col-xs-12
+    %h3 Data Description
+    %p Our data scheme is basically based on three tables companies, providers and stations representing 1:n relations: One company has n providers and one provider has n stations.
+    %br
+    .col-xs-12.col-lg-4
+      %b Companies:
+      %pre
+        :preserve
+          id (character varying)
+          created_at (timestamp without time zone)
+          updated_at (timestamp without time zone)
+    .col-xs-12.col-lg-4
+      %b Providers:
+      %pre
+        :preserve
+          id (character varying)
+          company_id (character varying)
+          name (character varying)
+          centroid_latitude (double precision)
+          centroid_longitude (double precision)
+          extra (character varying)
+          created_at (timestamp without time zone)
+          updated_at (timestamp without time zone)
+    .col-xs-12.col-lg-4
+      %b Stations:
+      %pre
+        :preserve
+          id character (varying)
+          provider_id (character varying)
+          region_id (character varying)
+          latitude (double precision)
+          longitude (double precision)
+          cars (integer)
+          extra (character varying)
+          created_at (timestamp without time zone)
+          updated_at (timestamp without time zone)
+
+  .col-xs-12
+    %h3 API Instructions
+    %p
+      The RubyCars data are provided as
+      = link_to 'JSON', 'http://en.wikipedia.org/wiki/JSON'
+      through an API. Currently, there are two endpoints:
+    %br
+
+    .col-xs-12.col-lg-6
+      %b rubycars.org/api/v1/companies:
+      %pre
+        :preserve
+          {"companies": [
+              {
+                  "id": "autolib",
+                  "providers": [
+                      {
+                          "name": "Autolib",
+                          "stations": ​1076,
+                          "href": "/v1/providers/autolib"
+                      }
+                  ]
+              },
+              {
+                  "id": "greenwheels",
+                  "providers": [
+                  {
+                      "name": "Greenwheels Germany",
+                      "stations": ​285,
+                      "href": "/v1/providers/greenwheels germany"
+                  },
+                  {
+                      "name": "Greenwheels Netherlands",
+                      "stations": ​1615,
+                      "href": "/v1/providers/greenwheels netherlands"
+                  },
+                  {...}
+                  ]
+              },
+              {...}
+          ]}
+
+
+    .col-xs-12.col-lg-6
+      %b rubycars.org/api/v1/providers/{provider_id}:
+      %pre
+        :preserve
+          {"provider_details": {
+
+              "id": "greenwheels germany",
+              "name": "Greenwheels Germany",
+              "centroid_longitude": ​22.3082998947368,
+              "centroid_latitude": ​52.3225084561403,
+              "href": "/v1/providers/greenwheels germany",
+              "stations": [
+                {
+
+                    "id": "80a44536cd4706f7c41ccb6a2eb96fed",
+                    "latitude": ​52.39242,
+                    "longitude": ​9.59696,
+                    "cars": ​0,
+                    "updated_at": "2016-02-22T12:05:03.117Z"
+
+                },
+                {
+
+                    "id": "e6323e0e9bcce9beb64782bad2e09985",
+                    "latitude": ​51.07277,
+                    "longitude": ​13.78699,
+                    "cars": ​1,
+                    "updated_at": "2016-02-22T12:05:03.169Z"
+
+                },
+                {...}
+              ]
+          }}

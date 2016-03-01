@@ -1,0 +1,175 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+body {
+  padding-top: 60px;
+}
+
+/* header */
+.logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.leaflet-container {
+  background: #282828; /* dark grey */
+}
+
+.logo-icon {
+  position: absolute;
+  margin-top: 0.7em;
+}
+
+.hover-info {
+  bottom: 10px;
+}
+
+.hover-info table {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 3px 6px 3px 6px;
+}
+
+.welcome-text {
+  top: 10px;
+  opacity: 0.8;
+  color: grey;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.map-theme-switcher-container {
+  bottom: 6px;
+  left: 10px;
+  cursor: pointer;
+}
+
+#light-map-theme {
+  color: yellow;
+}
+
+#dark-map-theme {
+  color: blue;
+}
+
+.centered-map-overlay {
+  left: 50%;
+}
+
+.centered-map-overlay div {
+  position: relative;
+  left: -50%;
+}
+
+.loading-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.loading-text span {
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  color: #000;
+  background-color: #fff;
+  position:relative;
+  top:50%;
+}
+
+/* home */
+.provider-button-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  top: 10px;
+  left: 48px; 
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* leaflet */
+#map {
+  height: auto;
+}
+
+.map-overlay {
+  position: absolute;
+  z-index: 99;
+}
+
+.participate {
+  height: 48px;
+  width: 170px;
+  top: 0px;
+  right: 0px;
+  background: url(asset-path('banner_before.png'));
+  background-repeat: no-repeat;
+  background-size: 170px 48px;
+  &:hover {
+    background: url(asset-path('banner_after.png'));
+    background-repeat: no-repeat;
+    background-size: 170px 48px;
+  }
+}
+
+table {
+  border-spacing: 10px 0px;
+  border-collapse: separate !important;
+}
+
+/* provider buttons */
+.btn-group-vertical {
+  width: 100%;
+}
+
+.provider-button {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  text-align: left;
+}
+
+.provider-button-group {
+  margin-bottom: 10px;
+}
+
+.overview-button{
+  text-align: center;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  text-align: left;
+}
+
+.region-dropdown{
+  margin-bottom: 10px;
+}
+
+.region-dropdown-menu{
+  font-size: 12px;
+  height: auto;
+  max-height: 400px;
+  overflow-x: hidden;
+}
