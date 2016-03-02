@@ -50,7 +50,7 @@ var allFunctions = function() {
   };
 
   if ( MarkersToShow == 'regions' ) {
-    jQuery('#map').append("<div class='map-overlay centered-map-overlay welcome-text'> \
+    jQuery('#map').append("<div class='map-overlay centered-map-overlay welcome-text col-xs-4'> \
                             <div> \
                               Discover station-based carsharing by selecting a region on the map or via dropdown... \
                             </div> \
