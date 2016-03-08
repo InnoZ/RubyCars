@@ -8,7 +8,8 @@ var allFunctions = function() {
   var responsiveMapSize = function() {
     var headerOffset = jQuery('header:visible').outerHeight();
     var innerHeight = jQuery(window).height() - jQuery('.navbar').outerHeight() - headerOffset;
-    jQuery('#map').height(innerHeight);
+    jQuery('#map').height(innerHeight + 53);
+    jQuery('#map').css('top', headerOffset - 60);
   };
 
   var switchBaseLayer = function(theme) {
