@@ -1,6 +1,5 @@
 module RubyCars
   class Playcar < Base
-    # rubocop:disable MethodLength
     def run
       stations.each do |station|
         RubyCars::Importer.new(
@@ -33,7 +32,7 @@ module RubyCars
 
     def header
       {
-        'Cookie' => "sid=#{cookie}"
+        'Cookie' => "sid=#{cookie}",
       }
     end
 
@@ -43,7 +42,7 @@ module RubyCars
 
     def query
       {
-        'markets' => '1'
+        'markets' => '1',
       }
     end
 

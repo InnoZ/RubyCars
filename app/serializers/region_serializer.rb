@@ -4,12 +4,12 @@ class RegionSerializer < ActiveModel::Serializer
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [object.longitude, object.latitude]
+        coordinates: [object.longitude, object.latitude],
       },
       properties: {
         region: object.id,
         stations: object.stations,
-      }
+      },
     }
   end
 end

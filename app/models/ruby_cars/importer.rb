@@ -16,15 +16,13 @@ module RubyCars
     attr_accessor :company_id, :provider_name, :provider_id, :latitude, :longitude, :cars, :extra, :geocoded_region
 
     def run
-      if in_admin_area?
-        @id ||= id
-        if Station.find_by(id: id)
-          update_station(id)
-        else
-          create_parents
-          create_station(id)
-        end
-        update_provider_centroid
+      update_provider_centroid if in_admin_area?
+      @id ||= id
+      if Station.find_by(id: id)
+        update_station(id)
+      else
+        create_parents
+        create_station(id)
       end
     end
 
@@ -32,20 +30,14 @@ module RubyCars
 
     def in_admin_area?
       !(geocoded_region.nil?) &&
-        #exception for test polygon 'Null Island'
+        # exception for test polygon 'Null Island'
         (latitude != 0 || longitude != 0)
     end
 
     def create_parents
-      if company.nil?
-        create_company
-      end
-      if provider.nil?
-        create_provider
-      end
-      if region.nil?
-        create_region
-      end
+      create_company if company.nil?
+      create_provider if provider.nil?
+      create_region if region.nil?
     end
 
     def region

@@ -33,9 +33,9 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 15
 
-MetricS/AbcSize:
+Metrics/AbcSize:
   Max: 20
 
-Style/CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Max: 20
 

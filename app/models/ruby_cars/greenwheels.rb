@@ -24,7 +24,6 @@ module RubyCars
         end
       end
 
-      # rubocop:disable MethodLength
       def collect
         results = []
         stations.each do |station|
@@ -38,7 +37,6 @@ module RubyCars
         results
       end
 
-      # rubocop:disable Metrics/AbcSize
       def run
         collect.each do |station|
           RubyCars::Importer.new(

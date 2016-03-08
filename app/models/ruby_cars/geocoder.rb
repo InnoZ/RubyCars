@@ -15,7 +15,7 @@ class Geocoder
       append('Russia', :region) ||
       append('Canada', :region) ||
       admin_area.fetch(:admin)
-    end
+  end
 
   private
 
@@ -29,10 +29,10 @@ class Geocoder
   end
 
   def query(location)
-    DB[ <<-SQL
+    DB[<<-SQL
       SELECT a.*
       FROM admin_areas a
-      WHERE ST_DWithin(a.geom, #{location}, 0.3) 
+      WHERE ST_DWithin(a.geom, #{location}, 0.3)
       ORDER BY ST_Distance(a.geom, #{location})
       SQL
     ].first

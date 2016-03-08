@@ -1,6 +1,5 @@
 module RubyCars
   class Bluemove < Base
-    # rubocop:disable MethodLength, Metrics/AbcSize
     def run
       stations.each do |station|
         RubyCars::Importer.new(

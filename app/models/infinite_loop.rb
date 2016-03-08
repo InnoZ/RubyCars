@@ -1,4 +1,5 @@
 class InfiniteLoop
+  # rubocop:disable MethodLength
   def run
     i = 0
     loop do

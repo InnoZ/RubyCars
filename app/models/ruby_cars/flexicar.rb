@@ -1,6 +1,5 @@
 module RubyCars
   class Flexicar < Base
-    # rubocop:disable MethodLength
     def run
       stations.each do |station|
         RubyCars::Importer.new(
