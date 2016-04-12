@@ -1,5 +1,7 @@
+require 'ruby_cars_log'
 module RubyCars
   class Playcar < Base
+    include RubyCarsLog
     def run
       stations.each do |station|
         RubyCars::Importer.new(
@@ -18,8 +20,10 @@ module RubyCars
     end
 
     def stations
-      page = agent.post(url, query, header)
-      JSON.parse(page.body)
+      log_request(url) do
+        page = agent.post(url, query, header)
+        JSON.parse(page.body)
+      end
     end
 
     def agent

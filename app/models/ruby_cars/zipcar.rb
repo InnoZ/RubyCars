@@ -1,3 +1,4 @@
+require 'ruby_cars_log'
 module RubyCars
   class Zipcar < Base
     # cities with Zipcar-operations are described here with the format
@@ -51,6 +52,7 @@ module RubyCars
     end
 
     class Market
+      include RubyCarsLog
       def initialize(lat, lon, city, lat_delta, lon_delta)
         @lat = lat
         @lon = lon
@@ -59,7 +61,6 @@ module RubyCars
         @lon_delta = lon_delta
       end
 
-      # rubocop:disable MethodLength, Metrics/AbcSize
       def run
         return unless stations.key?('locations')
         name = "Zipcar #{city}"
@@ -85,7 +86,9 @@ module RubyCars
       attr_reader :lat, :lon, :city, :lat_delta, :lon_delta
 
       def page
-        Mechanize.new.get_file(url)
+        log_request(url) do
+          Mechanize.new.get_file(url)
+        end
       end
 
       # rubocop:disable LineLength

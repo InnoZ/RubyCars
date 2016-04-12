@@ -1,5 +1,7 @@
+require 'ruby_cars_log'
 module RubyCars
   class Enterprise < Base
+    include RubyCarsLog
     def run
       stations.fetch('lotdetailsList').each do |station|
         RubyCars::Importer.new(
@@ -21,7 +23,9 @@ module RubyCars
     private
 
     def page
-      Mechanize.new.get_file(url)
+      log_request(url) do
+        Mechanize.new.get_file(url)
+      end
     end
 
     def url

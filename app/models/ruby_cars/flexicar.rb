@@ -1,4 +1,6 @@
+require 'ruby_cars_log'
 module RubyCars
+  include RubyCarsLog
   class Flexicar < Base
     def run
       stations.each do |station|
@@ -25,7 +27,9 @@ module RubyCars
     private
 
     def page
-      Mechanize.new.get_file(url)
+      log_request(url) do
+        Mechanize.new.get_file(url)
+      end
     end
 
     def url

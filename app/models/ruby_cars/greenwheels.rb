@@ -1,3 +1,4 @@
+require 'ruby_cars_log'
 module RubyCars
   class Greenwheels < Base
     COUNTRIES = %w[de nl]
@@ -11,6 +12,7 @@ module RubyCars
     end
 
     class Country
+      include RubyCarsLog
       attr_reader :country
 
       def initialize(country)
@@ -56,7 +58,9 @@ module RubyCars
       end
 
       def page
-        Mechanize.new.get_file(url)
+        log_request(url) do
+          Mechanize.new.get_file(url)
+        end
       end
 
       def url
