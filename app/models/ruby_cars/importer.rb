@@ -16,7 +16,6 @@ module RubyCars
     attr_accessor :company_id, :provider_name, :provider_id, :latitude, :longitude, :cars, :extra, :geocoded_region
 
     def run
-      update_provider_centroid if in_admin_area?
       @id ||= id
       if Station.find_by(id: id)
         update_station(id)
@@ -24,6 +23,7 @@ module RubyCars
         create_parents
         create_station(id)
       end
+      update_provider_centroid if in_admin_area?
     end
 
     private
