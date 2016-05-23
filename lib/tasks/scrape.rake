@@ -19,7 +19,7 @@ namespace :scrape do
   RubyCars::Base.all.each do |subclass|
     desc "Scrape the provider #{subclass.name}"
     task subclass.name.to_sym => [:environment] do
-      subclass.new.run
+      Runner.new(subclass.new).run
     end
   end
 end

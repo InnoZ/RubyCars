@@ -7,11 +7,10 @@ class InfiniteLoop
       start = Time.now
       begin
         RubyCars::Base.all.each do |subclass|
-          subclass.new.run
+          Runner.new(subclass.new).run
         end
       rescue => e
-        Rails.logger.error e.message
-        e.backtrace.each { |line| Rails.logger.error line }
+        RubyCarsLog.logger.warn "result=error error=#{e.class} message=\"#{e.message}\""
         next
       end
       finish = Time.now

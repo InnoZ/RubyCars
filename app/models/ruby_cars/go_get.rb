@@ -1,5 +1,7 @@
+require 'ruby_cars_log'
 module RubyCars
   class GoGet < Base
+    include RubyCarsLog
     def run
       stations.each do |station|
         RubyCars::Importer.new(
@@ -15,9 +17,11 @@ module RubyCars
     end
 
     def stations
-      agent = Mechanize.new
-      page = agent.post(url, query, header)
-      JSON.parse(page.body)
+      log_request(url) do
+        agent = Mechanize.new
+        page = agent.post(url, query, header)
+        JSON.parse(page.body)
+      end
     end
 
     def provider_name
