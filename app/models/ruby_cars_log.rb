@@ -1,3 +1,5 @@
+require 'logger'
+
 module RubyCarsLog
   def self.logger
     @logger ||= begin

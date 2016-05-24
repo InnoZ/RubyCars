@@ -1,4 +1,4 @@
-require 'ruby_cars_log'
+require_relative '../ruby_cars_log'
 module RubyCars
   class Greenwheels < Base
     COUNTRIES = %w[de nl]

@@ -1,4 +1,4 @@
-require 'ruby_cars_log'
+require_relative '../ruby_cars_log'
 module RubyCars
   class Zipcar < Base
     # cities with Zipcar-operations are described here with the format
