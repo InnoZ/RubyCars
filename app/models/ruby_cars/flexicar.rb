@@ -1,7 +1,7 @@
 require_relative '../ruby_cars_log'
 module RubyCars
-  include RubyCarsLog
   class Flexicar < Base
+    include RubyCarsLog
     def run
       stations.each do |station|
         RubyCars::Importer.new(
