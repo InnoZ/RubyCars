@@ -2,7 +2,9 @@ require_relative '../../app/models/ruby_cars/base.rb'
 
 desc 'Scrape all Providers'
 task scrape: [:environment] do
-  InfiniteLoop.new.run
+  RubyCars::Base.all.each do |subclass|
+    Runner.new(subclass.new).run
+  end
 end
 
 namespace :scrape do
