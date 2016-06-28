@@ -2,7 +2,7 @@
 
 RubyCars provides a set of tools to scrape (station-based, round-trip) car sharing data from different websites and APIs, thus providing a coherent and generalized set of classes and methods to access this sort of information.
 
-The library is distributed and intended mainly for information services fro shared mobility - much like the sister projects PiBikes and CityBikes - and as a basis to measure and monitor the global status of station-based carsharing to estimate its evironmental and societal effects.
+The library is distributed and intended mainly for information services for shared mobility - much like the sister projects PiBikes and CityBikes - and as a basis to measure and monitor the global status of station-based carsharing to estimate its evironmental and societal effects.
 
 
 *Local* *Development* *Environment*
@@ -42,7 +42,14 @@ or
 http://localhost:3000
 
 
-*Deployment*
+*Deployment on Uberspace*
 -----------------------
 For deploying RubyCars on Uberspace, the Rails depolyment guide from the Uberspace-Wiki (https://wiki.uberspace.de/cool:rails) is very helpful, but before, PostgreSQL and PostGIS must be installed.
 Since there is no superuser access on a shared sever, they cannot simply be installed via a package manager as apt-get. For PostgreSQL, there is a Uberspace script available by default: https://wiki.uberspace.de/database:postgresql. PostGIS and its dependencies have to be compiled. Luckily, there is an instruction how to do that: https://github.com/rajanski/postgresql_postgis-on-uberspace. In our case, step "Create a PostGIS template" raised an error, solved by replacing all the calls of the environmental variable $HOME with the respective absolute path. When building the database schema via rake, PostGIS can not be included with the psql command "Create extension postgis", but instead the database must be generated manually with the postgis template created before: createdb rubycars_production --template template_postgis
+
+
+*Running rake tasks via cron job*
+-----------------------
+Since Uberspace uses ruby via RVM, "ruby cron setup" can be executed to write necessary environment variables into the crontab file. Then, cronjobs executing rake tasks can be installed as in the following example:
+
+*/5 * * * * /bin/bash -l -c "cd /home/innoz/rubycars && bundle exec rake RAILS_ENV=production scrape"
