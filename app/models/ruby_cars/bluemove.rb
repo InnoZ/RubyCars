@@ -10,7 +10,7 @@ module RubyCars
           provider_id: provider_name.downcase,
           latitude: Float(station.fetch('gpslat')),
           longitude: Float(station.fetch('gpslong')),
-          cars: Integer(station.fetch('vehicles').length),
+          cars: Integer(station.fetch('comments').split("\n").length),
           extra: {},
         ).run
       end
