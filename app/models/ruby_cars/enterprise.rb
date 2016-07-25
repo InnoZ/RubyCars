@@ -4,6 +4,7 @@ module RubyCars
     include RubyCarsLog
     def run
       stations.fetch('lotdetailsList').each do |station|
+        next if station.fetch('latitude') == 0.0 && station.fetch('longitude') == 0.0
         RubyCars::Importer.new(
           company_id: 'enterprise',
           provider_name: "Enterprise - #{station.fetch('instance')}",
