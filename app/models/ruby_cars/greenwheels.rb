@@ -30,7 +30,7 @@ module RubyCars
         results = []
         stations.each do |station|
           station.fetch('locations').each do |attributes|
-            next if attributes.fetch('geo').first == 0.0 && attributes.fetch('geo').last == 0.0
+            next if attributes.fetch('geo').first.between?(-0.5, 0.5) && attributes.fetch('geo').last.between?(-0.5, 0.5)
             results << [station.fetch('name'),
                         attributes.fetch('geo').first,
                         attributes.fetch('geo').last,
