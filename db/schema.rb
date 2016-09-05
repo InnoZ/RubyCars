@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210124824) do
+ActiveRecord::Schema.define(version: 20160905135151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 20160210124824) do
   end
 
   add_index "regions", ["id"], name: "index_regions_on_id", unique: true, using: :btree
+
+  create_table "sightings", force: :cascade do |t|
+    t.string   "provider",                     null: false
+    t.string   "city",                         null: false
+    t.string   "key"
+    t.datetime "first_seen_at",                null: false
+    t.datetime "last_seen_at",                 null: false
+    t.float    "latitude",                     null: false
+    t.float    "longitude",                    null: false
+    t.integer  "fuel_level"
+    t.boolean  "stationary",   default: false, null: false
+    t.integer  "price"
+    t.string   "vehicle_type", default: "car", null: false
+    t.string   "scraper",                      null: false
+  end
 
   create_table "stations", id: false, force: :cascade do |t|
     t.string   "id",          null: false
