@@ -93,12 +93,25 @@ module RubyCars
     end
 
     def update_station(id)
-      provider.station
-        .find_by(id: id)
-        .update_attributes!(
-          cars: cars,
-          updated_at: Time.now.utc,
-        )
+      if expired_date?(id)
+        provider.station.find_by(id: id).destroy
+      else
+        provider.station
+          .find_by(id: id)
+          .update_attributes!(
+            cars: cars,
+            updated_at: Time.now.utc,
+          )
+      end
+    end
+
+    def expired_date?(id)
+      timestamp = provider.station.where(id: id).first[:updated_at]
+      date = Date.new(timestamp.year, timestamp.month, timestamp.day)
+      current_date = Date.today
+
+      return true if Integer(current_date - date) > 30
+      false
     end
 
     def id
