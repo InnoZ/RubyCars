@@ -50,6 +50,6 @@ Since there is no superuser access on a shared sever, they cannot simply be inst
 
 *Running* *rake* *tasks* *via* *cron* *job*
 -----------------------
-Since Uberspace uses ruby via RVM, "ruby cron setup" can be executed to write necessary environment variables into the crontab file. Then, cronjobs executing rake tasks can be installed as in the following example:
+Since Uberspace uses ruby via RVM, "rvm cron setup" can be executed to write necessary environment variables into the crontab file. Then, cronjobs executing rake tasks can be installed as in the following example:
 
 */5 * * * * /bin/bash -l -c "cd /home/innoz/rubycars && bundle exec rake RAILS_ENV=production scrape"
